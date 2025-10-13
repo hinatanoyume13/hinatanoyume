@@ -1,52 +1,35 @@
 <script setup>
-import StarCanvas from './components/StarCanvas.vue'
-import StarCanvas02 from './components/StarCanvas_02.vue'
 
+import StarCanvas01 from './components/StarCanvas_vol2_00初期案_RA反転.vue'
+
+import StarCanvas02 from './components/StarCanvas_vol2_03視野長方形_RA反転.vue'
+
+
+
+import './style_add.css'
 </script>
 
 <template>
- 
- 
-    <h1>星を表示するテスト　Ver1</h1>
-    	<h1>直交座標表示(たぶん)</h1>
 
- 
- 
-  <div>
-    <StarCanvas />
+
+  <div class="app-container">
+    <!-- 画面  -->
+    
+    <StarCanvas01 />
+    
   </div>
+  <br />
+  <br />
 
-  <div>
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
-  </div>
 
-	<h1>星を表示するテスト　Ver2 </h1>
-	<h1>正距方位図法(たぶん)</h1>
-
-  <div>
+  <div class="app-container">
+    <!-- 画面  -->
+    
     <StarCanvas02 />
+    
   </div>
-
-
-  <div>
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
-
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
-
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
-
-
-  </div>
-
-
+  <br />
+  <br />
 
 
 
@@ -54,5 +37,5 @@ import StarCanvas02 from './components/StarCanvas_02.vue'
 </template>
 
 <style scoped>
-/* 必要ならスタイルをここに追加 */
+/* App.vue 側では特別なレイアウトは不要 */
 </style>

@@ -1,0 +1,431 @@
+/* アプリ全体を上下に並べる */ 
+
+* {
+  /* widthにpaddingやborderも含まれる設定　すべてのCSSに適応 */
+  box-sizing: border-box;
+}
+
+
+ /* App.vue　全体CSS */
+.app-container { 
+ display: flex;  /* 要素を並べる設定 */
+ flex-direction: column; /* 縦（列）方向に並べる　初期値はrowで行方向 */ 
+
+ gap: 40px; /* 画面間の余白 */ 
+
+
+ width: auto;
+ height: 100%;
+ object-fit: contain; /* ← アスペクト比維持でフィット */ 
+ 
+ margin: 0; /* 左寄せ固定のときに必要 指定なしだとflexは余白が自動で中央ぞろえになる*/
+ } 
+ 
+ 
+ 
+ /* 画面サイズ○○px以上のとき適応される設定 */ 
+  @media (min-width: 700px) { 
+  .app-container { 
+ width: 660px; /* PCでは660px固定 */ 
+ height: 100%;
+  }  
+ }
+ 
+ 
+ /* 星図.vue　全体CSS */
+ .display-screen01 {
+  display: flex; 
+  flex-direction: column; /* タイトル→中身 の縦並び */ 
+  gap: 0px;  /* 10→0にして下部のUIをくっつけた */ 
+  width: auto; 
+  height: auto; 
+    
+  } 
+  
+  
+  /* 上部UIの外側　CSS */
+  .topUI-out-container {
+  display: flex;
+  flex-direction: row; /* 横並びに変更 */
+  gap: 10px;           /* 列の間隔 */
+
+  aspect-ratio: 10 / 1; /* 比率を維持 */  
+  height: 100%;
+  width: 100%; 
+  object-fit: contain; /* ← アスペクト比維持でフィット */ 
+  } 
+  
+  
+  
+   /* 上部UIその１外側　CSS */
+ .topUI-container01 { 
+ display: flex; 
+ gap: 0px; /* 2列の余白 */ 
+ border: 1px solid black; 
+ object-fit: contain; /* ← アスペクト比維持でフィット */ 
+ min-width:0px;
+ padding: 0;
+ width: 100%; 
+ height: 100%;
+ 
+ } 
+ 
+  /* UIそのもの */ 
+ .topUI-panel01 { 
+ flex: 1; 
+ flex-direction: column; /* 縦並び */
+ justify-content: center; /* ボタンを右寄せ */
+ align-items: flex-end;  /* ← ボタンを右寄せにする */
+  
+ width: 100%;  
+ height: auto; /* ← 中身に合わせる */
+ object-fit: contain; /* ← アスペクト比維持でフィット */ 
+ display: flex; /* ← 中身の高さを調整 */ 
+
+ padding: 0 1rem; /* ← はみ出し防止の余白を追加 */
+ 
+ overflow: auto; /* ← 万が一あふれたときはスクロール */
+ } 
+ 
+ 
+ 
+   /* 上部UIその２外側　CSS */
+ .topUI-container02 { 
+ display: flex; 
+ gap: 0px; /* 2列の余白 */ 
+ border: 1px solid black; 
+ width: 84.5%; 
+ height: 100%;
+ object-fit: contain; /* ← アスペクト比維持でフィット */ 
+ min-width:0px;
+ padding: 0;
+ } 
+   
+     /* UIそのもの */ 
+ .topUI-panel02 { 
+ flex: 1; 
+ 
+  flex-direction: column; /* 縦並び */
+ justify-content: center; /* 寄せ */
+ align-items: center;  /* ← 寄せ */
+
+ 
+ width: 100%; /* 60←70 */ 
+ height: auto; /* ← 中身に合わせる */
+ object-fit: contain; /* ← アスペクト比維持でフィット */ 
+ display: flex; /* ← 中身の高さを調整 */ 
+ 
+ padding: 0 1rem; /* ← 上下余白を0にしないとスクロールバーが出る */
+ overflow: auto; /* ← 万が一あふれたときはスクロール */
+ } 
+
+   
+   
+   
+   
+   /* 下部UIの外側　CSS */
+  .underUI-out-container {
+  display: flex;
+  flex-direction: row; /* 横並びに変更 */
+  gap: 10px;           /* 列の間隔 */
+ 
+  object-fit: contain; /* ← アスペクト比維持でフィット */ 
+  aspect-ratio: 8 / 2;  /* 比率を維持 */
+  height: 100%;
+  width: 100%; 
+  }  
+  
+   /* 下部UIその１外側　CSS */
+ .underUI-container01 { 
+ display: flex; 
+ flex-direction: row;
+ 
+ gap: 0px; /* 2列の余白 */ 
+ border: 1px solid black; 
+ object-fit: contain; /* ← アスペクト比維持でフィット */ 
+ min-width:0px;
+ padding: 0;
+
+ width: 100%; 
+ height: 100%;
+ } 
+
+
+
+  /* UIそのもの */ 
+ .underUI-panel01 { 
+ flex: 1; 
+ width: 100%; /*  */ 
+ height: auto; /* ← 中身に合わせる */
+ object-fit: contain; /* ← アスペクト比維持でフィット */ 
+ display: flex; /* ← 中身の高さを調整 */ 
+ flex-direction: row;
+ justify-content: flex-start; 
+ padding: 1rem; /* ← はみ出し防止の余白を追加 */
+ overflow: auto; /* ← 万が一あふれたときはスクロール */
+ } 
+
+
+
+   /* 下部UIその２外側　CSS */
+ .underUI-container02 { 
+ display: flex; 
+ 
+ gap: 0px; /* 2列の余白 */ 
+ border: 1px solid black; 
+ width: 84.5%; 
+ height: 100%;
+ object-fit: contain; /* ← アスペクト比維持でフィット */ 
+ min-width:0px;
+ padding: 0;
+ }  
+  
+    /* UIそのもの */ 
+ .underUI-panel02 { 
+ flex: 1; 
+ width: 100%; /* 60←70 */ 
+ height: auto; /* ← 中身に合わせる */
+ object-fit: contain; /* ← アスペクト比維持でフィット */ 
+ display: flex; /* ← 中身の高さを調整 */ 
+ flex-direction: column; 
+ justify-content: flex-start; 
+ padding: 1rem; /* ← はみ出し防止の余白を追加 */
+ overflow: auto; /* ← 万が一あふれたときはスクロール */
+ } 
+
+  
+  
+  
+  
+  
+  /* キャンバス・UIの外側　CSS */
+  .star-out-container {
+  display: flex;
+  flex-direction: row; /* 横並びに変更 */
+  gap: 10px;           /* 列の間隔 */
+  
+  aspect-ratio: 5 / 2; /* 比率を維持 */
+  height: 100%;
+  width: 100%; 
+  object-fit: contain; /* ← アスペクト比維持でフィット */ 
+  
+  } 
+  
+  
+  
+ /* キャンバス外側　CSS */
+ .star-container01 { 
+ display: flex; 
+ gap: 20px; /* 2列の余白 */ 
+ 
+  /* align-items: stretch;← 子要素の高さを揃える（重要！） */ 
+ 
+ border: 1px solid black; 
+ aspect-ratio: 4 / 3; /* 比率を維持 */
+ height: 100%;
+ width: 100%; 
+ object-fit: contain; /* ← アスペクト比維持でフィット */ 
+ padding: 0;
+ 
+ } 
+ 
+ 
+ 
+ /* UI外側　CSS */
+ .star-container02 { 
+ display: flex; 
+ gap: 20px; /* 2列の余白 */ 
+ 
+ border: 1px solid black; 
+ width: 100%; 
+ height: 100%;
+ object-fit: contain; /* ← アスペクト比維持でフィット */ 
+ min-width:0px;
+ padding: 0;
+
+ } 
+ 
+ 
+ 
+ /* キャンバスそのもの */ 
+ .star-canvas { 
+ flex: 1; 
+ width: 100%; /* 60←70 */ 
+ height: 100%; /* ← 親の高さに合わせる */ 
+ object-fit: contain; /* ← アスペクト比維持でフィット */ 
+ 
+ border: 1px solid #ccc; 
+ } 
+ 
+ 
+ /* UIそのもの */ 
+ .ui-panel { 
+ flex: 1; 
+ width: 100%; /* 60←70 */ 
+ height: auto; /* ← 中身に合わせる */
+ object-fit: contain; /* ← アスペクト比維持でフィット */ 
+ 
+ display: flex; /* ← 中身の高さを調整 */ 
+ flex-direction: column; 
+ justify-content: flex-start; 
+ 
+ padding: 1rem; /* ← はみ出し防止の余白を追加 */
+ overflow: auto; /* ← 万が一あふれたときはスクロール */
+ } 
+ 
+ 
+ 
+ /* 見た目の装飾設定 */
+.input-row {
+  display: flex;         /* 横並びにする */
+  align-items: center;   /* 高さを揃える */
+  gap: 8px;              /* ラベルと入力欄の間隔 */
+  margin-bottom: 6px;    /* 各行の間隔 */
+}
+
+.input-row label {
+  width: 80px;           /* ラベル幅固定 */
+  text-align: right;     /* 右寄せで入力欄に近づける */
+}
+.input-row input[type="number"] {
+  width: 100px;
+}
+ 
+
+/* ▼ 全体のウィンドウ外観（星図全体のパネル） */
+.display-screen01 {
+  background: #f2f5fa;           /* 淡いグレー背景（Windows風） */
+  border: 1px solid #c7ccd5;     /* 薄めの外枠 */
+  border-radius: 6px;            /* 少し丸みを帯びた角 */
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.2); /* ふんわり影 */
+  padding: 8px;                  /* 内側の余白 */
+}
+
+/* ▼ セクションごとの枠（星図やUIブロックなど） */
+.star-container01,
+.star-container02,
+.topUI-container01,
+.topUI-container02,
+.underUI-container01,
+.underUI-container02 {
+  border: 1px solid #b9bec9;     /* 薄いグレーの枠線 */
+  border-radius: 4px;            /* 少し丸み */
+  background: #ffffff;           /* 白背景でコントラストを出す */
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.05); /* 内側のわずかな立体感 */
+}
+
+/* ▼ ボタン装飾 */
+button {
+  background: linear-gradient(to bottom, #f9fafc, #e2e6ec); /* グラデーション */
+  border: 1px solid #aab2bd;
+  border-radius: 4px;
+  height: 40px; 
+  
+  padding: 6px 12px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+button:hover {
+  background: linear-gradient(to bottom, #ffffff, #dbe1ea);
+}
+
+button:active {
+  background: #cdd3dd;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* ▼ 入力欄の見た目 */
+input[type="text"],
+input[type="number"],
+input[type="time"] {
+  border: 1px solid #bfc6d1;
+  border-radius: 3px;
+  padding: 4px 6px;
+  background: #fff;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+  font-size: 14px;
+  color: #333;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-color: #7da2f5;
+  box-shadow: 0 0 3px rgba(125,162,245,0.5);
+}
+
+/* ▼ ラベルの文字 */
+label {
+  color: #333;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+
+.topUI-panel01 button {
+  width: 50%;
+  max-width: 200px;  /* 必要に応じて上限を設定（任意） */
+  height: 36px;
+  font-size: 14px;
+}
+
+.topUI-panel02 button {
+  width: 100%;
+  height: 36px;
+  font-size: 14px;
+}
+
+
+/* 下部UIその1（01）のボタンは横幅50% */
+.underUI-panel01 button {
+  width: 50%;
+  max-width: 200px;  /* 必要に応じて上限を設定（任意） */
+  height: 36px;
+  font-size: 14px;
+}
+
+/* 下部UIその2（02）のボタンは横幅100% */
+.underUI-panel02 button {
+  width: 100%;
+  height: 36px;
+  font-size: 14px;
+}
+
+
+/* ▼ 上部ボタン群 */
+.topUI-container01{
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ▼ 下部ボタン群 */
+.underUI-panel01 {
+  justify-content: start;
+
+  gap: 12px;
+}
+
+.underUI-panel02 {
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+
+
+
+/* ▼ 星図部分（canvas）を枠内に馴染ませる */
+.star-canvas {
+  border: 1px solid #aab2bd;
+  border-radius: 3px;
+  background: radial-gradient(circle at center, #081b3a 0%, #020a18 100%);
+}
+
+ 
+ 
+ 
