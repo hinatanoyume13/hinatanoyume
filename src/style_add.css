@@ -287,8 +287,13 @@
   width: 80px;           /* ラベル幅固定 */
   text-align: right;     /* 右寄せで入力欄に近づける */
 }
-.input-row input[type="number"] {
-  width: 100px;
+
+.input-row 
+ input[type="text"],
+ input[type="number"],
+ input[type="time"]{
+  width: 120px;
+  height: 30px;
 }
  
 
@@ -352,7 +357,8 @@ input[type="time"] {
 }
 
 input[type="text"]:focus,
-input[type="number"]:focus {
+input[type="number"]:focus,
+input[type="time"]:focus {
   outline: none;
   border-color: #7da2f5;
   box-shadow: 0 0 3px rgba(125,162,245,0.5);
@@ -426,6 +432,12 @@ label {
   background: radial-gradient(circle at center, #081b3a 0%, #020a18 100%);
 }
 
- 
+
+.time-display {
+  font-size: 14px;
+  color: #000;
+  text-align: left;
+}
+
  
  
