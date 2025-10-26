@@ -1,11 +1,8 @@
 <script setup>
 
-import StarCanvas01 from './components/StarCanvas_vol2_00初期案_RA反転.vue'
-
-import StarCanvas02 from './components/StarCanvas_vol2_03視野長方形_RA反転.vue'
-
-import StarCanvas03 from './components/StarCanvas_vol2_10方位高度試作.vue'
-
+import Observation01 from './components/none.vue'
+import StarMap01 from './components/StarCanvas_vol3_06スコープ切り替え.vue'
+import Status01 from './components/none.vue'
 
 
 
@@ -15,39 +12,12 @@ import './style_add.css'
 
 <template>
 
-
   <div class="app-container">
-    <!-- 画面  -->
-    
-    <StarCanvas01 />
-    
+    <!-- 観測画面  -->
+    <StarMap01 />
   </div>
   <br />
   <br />
-
-
-  <div class="app-container">
-    <!-- 画面  -->
-    
-    <StarCanvas02 />
-    
-  </div>
-  <br />
-  <br />
-
-  <div class="app-container">
-    <!-- 画面  -->
-    
-    <StarCanvas03 />
-    
-  </div>
-  <br />
-  <br />
-
-
-  
-  
-  
 
 </template>
 

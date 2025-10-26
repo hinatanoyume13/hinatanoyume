@@ -44,7 +44,7 @@ h1 {
 #app {
   max-width:100%;   /* 1280px の固定幅をやめる */
   margin: 0;/* auto を外す */
-  padding: 2rem; /* 2remを0に */  
+  padding: 0rem; /* 2remを0に */  
   text-align: left;/* センター寄せから左寄せに*/
 }
 

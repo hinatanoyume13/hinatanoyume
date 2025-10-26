@@ -11,7 +11,7 @@
  display: flex;  /* 要素を並べる設定 */
  flex-direction: column; /* 縦（列）方向に並べる　初期値はrowで行方向 */ 
 
- gap: 40px; /* 画面間の余白 */ 
+ gap: 10px; /* 画面と画面の余白 */ 
 
 
  width: auto;
@@ -160,7 +160,9 @@
  object-fit: contain; /* ← アスペクト比維持でフィット */ 
  display: flex; /* ← 中身の高さを調整 */ 
  flex-direction: row;
+ 
  justify-content: flex-start; 
+ 
  padding: 1rem; /* ← はみ出し防止の余白を追加 */
  overflow: auto; /* ← 万が一あふれたときはスクロール */
  } 
@@ -193,8 +195,6 @@
  overflow: auto; /* ← 万が一あふれたときはスクロール */
  } 
 
-  
-  
   
   
   
@@ -299,7 +299,7 @@
 
 /* ▼ 全体のウィンドウ外観（星図全体のパネル） */
 .display-screen01 {
-  background: #f2f5fa;           /* 淡いグレー背景（Windows風） */
+  background: #CED9E7;           /* 青グレー背景 */
   border: 1px solid #c7ccd5;     /* 薄めの外枠 */
   border-radius: 6px;            /* 少し丸みを帯びた角 */
   box-shadow: 2px 2px 6px rgba(0,0,0,0.2); /* ふんわり影 */
@@ -313,9 +313,9 @@
 .topUI-container02,
 .underUI-container01,
 .underUI-container02 {
-  border: 1px solid #b9bec9;     /* 薄いグレーの枠線 */
+  border: 2px solid #99BCE8;     /* 薄い青の枠線　b9bec9　→　99BCE8 */
   border-radius: 4px;            /* 少し丸み */
-  background: #ffffff;           /* 白背景でコントラストを出す */
+  background: #DFE9F6;           /* 薄い青背景でコントラストを出す */
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.05); /* 内側のわずかな立体感 */
 }
 
@@ -397,30 +397,54 @@ label {
 /* 下部UIその2（02）のボタンは横幅100% */
 .underUI-panel02 button {
   width: 100%;
-  height: 36px;
+  height: 30px;  /* ボタンの上下の厚み 36→30 */
   font-size: 14px;
+  
+  /* 文字の上下中央ぞろえ */
+  display: flex;/* 文字のフレックス */
+  justify-content: center; /* 横方向の中央寄せ */
+  align-items: center;     /* 縦方向の中央寄せ */
+  
 }
 
 
 /* ▼ 上部ボタン群 */
-.topUI-container01{
-  justify-content: center;
-  align-items: center;
+.topUI-container01 {
+  justify-content: flex-start;  /* ← center → flex-start に変更 */
+
+  /* align-items: flex-start;  */   
+   /*  上揃え 不要 */
+
   gap: 12px;
 }
+
+
 
 /* ▼ 下部ボタン群 */
 .underUI-panel01 {
-  justify-content: start;
-
+  justify-content: flex-start;  /* ← ここも明示的に上揃え */
+  align-items: flex-start;      /* ← 念のため追加 */
   gap: 12px;
 }
+
 
 .underUI-panel02 {
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
+  justify-content: flex-start;  /* 上揃えにしたい場合 */
+  align-items: flex-start;      /* ← 中央→上に */
+  gap: 4px;
 }
+
+
+/* 天体名の装飾 */
+.underUI-panel02 input[type="text"] {
+  width: 100%;          /* 幅をお好みで調整（ボタンに合わせて） */
+  height: 30px;          /* ボタンと同じ高さにしたい場合 */
+  text-align: center;    /* 入力文字を中央寄せ */
+  padding: 0;            /* 余白をリセットして中央に寄せやすく */
+  box-sizing: border-box;/* 幅の計算を安定させる */
+}
+
+
 
 
 
@@ -439,5 +463,241 @@ label {
   text-align: left;
 }
 
- 
+
+
+
+
+
+
+
+/* ステータス */
+/* ▼ ステータス全体のウィンドウ枠 */
+.status-screen01 {
+  width: 100%;
+  max-width: 680px;
+  margin: 0;                          /* 外余白リセット */
+  padding: 8px;                       /* 内余白を追加して他と統一 */
+  background: #CED9E7;                /* 他のdisplay-screenと同系色 */
+  border: 1px solid #c7ccd5;          /* 外枠線（薄めグレー） */
+  border-radius: 6px;                 /* 丸みを統一 */
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+/* ▼ タイトルバー（上部） */
+.status-screen01 > label {
+  display: block;
+  padding: 0px 0px;
+  margin: 0;
+  
+  /* 
+  background: linear-gradient(to bottom, #f9fafc, #e2e6ec);
+  border: 1px solid #aab2bd;
+  */
+  
+  border-bottom: none;                /* 下線を消して接続感 */
+  border-radius: 6px 6px 0 0;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+}
+
+
+
+/* ▼ ステータス中身（下部の枠部分） */
+.statusUI-out-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;            /* 上揃え */
+  gap: 8px;
+
+  border: 2px solid #99BCE8;
+  background: #DFE9F6;
+  border-radius: 0 0 6px 6px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+  padding: 8px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+
+/* ▼ 左側：ボタン＋残り秒数 */
+.statusUI-container01 {
+  flex: 0 0 50%;               /* 左右2等分 */
+  display: flex;
+  align-items: center;          /* ← 高さを中央揃え */
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+
+.statusUI-container01 .statusUI-panel01 {
+  display: flex;
+  align-items: center;          /* ← 縦位置を完全に揃える */
+  justify-content: flex-start;
+}
+
+
+/* ▼ 秒数入力（左寄せ） */
+.statusUI-container01 input[type="text"] {
+  width: 60px;
+  height: 28px;
+  text-align: left;
+  padding-left: 4px;
+  border: 1px solid #bfc6d1;
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+}
+
+
+
+/* ▼ ボタン */
+.statusUI-container01 button {
+  height: 30px;
+  padding: 0 12px;
+  margin-right: 38px;           /* ← ここで「右側だけ余白」を確保 */
+  background: linear-gradient(to bottom, #f9fafc, #e2e6ec);
+  border: 1px solid #aab2bd;
+  border-radius: 4px;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.statusUI-container01 label {
+  font-size: 14px;
+  color: #333;
+  line-height: 30px;            /* ← ボタンと同じ高さに中央寄せ */
+  margin: 0 4px 0 0;            /* ラベルと入力の距離を少しだけ確保 */
+}
+
+.statusUI-container01 input[type="text"] {
+  width: 60px;
+  height: 28px;
+  text-align: left;
+  padding-left: 4px;
+  border: 1px solid #bfc6d1;
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+}
+
+
+
+.statusUI-container01 button:hover {
+  background: linear-gradient(to bottom, #ffffff, #dbe1ea);
+}
+
+.statusUI-container01 button:active {
+  background: #cdd3dd;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+}
+
+
+
+
+
+
+.statusUI-container02 {
+  flex: 0 0 50%;                      /* 左右を2等分 */
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+
+.statusUI-container02 .statusUI-panel02 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;  /* 縦方向に伸ばす */
+  justify-content: flex-start; /* 上揃え */
+  width: 100%;
+  height: 100%;
+}
+
+/* textarea全体 */
+.statusUI-panel02 textarea {
+  width: 100%;
+  height: 100%;
+  min-height: 80px;          /* 高さをある程度確保 */
+  resize: vertical;           /* ユーザーが縦方向に伸縮可能 */
+  padding: 4px 6px;           /* 内側余白 */
+  font-family: monospace;     /* 見やすくする */
+  font-size: 14px;
+  line-height: 1.2;           /* 上揃えっぽく見える */
+  box-sizing: border-box;
+  border: 1px solid #bfc6d1;
+  border-radius: 3px;
+  background: #fff;
+  color: #333;
+  overflow-y: auto;           /* 縦スクロール */
+}
+
+
+/* textarea focus時 */
+.statusUI-panel02 textarea:focus {
+  outline: none;
+  border-color: #7da2f5;
+  box-shadow: 0 0 3px rgba(125,162,245,0.5);
+}
+
+
+/* ▼ 右側：ログ領域 */
+.statusUI-container02 {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start; /* 上揃え */
+  box-sizing: border-box;
+}
+
+
+
+
+/* 天体の選択　プルダウンなど */
+.dropdown-menu {
+  background: #222;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 8px;
+  margin-top: 4px;
+  width: 300px; /* プルダウンの幅 */
+  position: absolute;
+  z-index: 100;
+}
+.dropdown-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.dropdown-menu li {
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.dropdown-menu li:hover {
+  background: #444;
+}
+
+
+
+
+
+
  
