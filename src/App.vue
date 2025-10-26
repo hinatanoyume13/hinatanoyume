@@ -1,7 +1,7 @@
 <script setup>
 
 import Observation01 from './components/none.vue'
-import StarMap01 from './components/StarCanvas_vol3_06スコープ切り替え.vue'
+import StarMap01 from './components/StarCanvas_vol3_07_公開用テスト非表示.vue'
 import Status01 from './components/none.vue'
 
 
