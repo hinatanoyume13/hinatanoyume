@@ -698,6 +698,37 @@ label {
 
 
 
+/* 高度判定　ポップアップ用 */
+.popup {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  border: 3px solid #cc0000;
+  color: #330000;
+  padding: 10px 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  z-index: 1000;
+}
 
 
+
+
+/* プルダウンメニューキャンセル用 */
+.click-catcher {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
  
+/* プルダウンメニューキャンセル用 調整*/
+.app-container {
+  position: relative;
+  z-index: 2;
+}
+

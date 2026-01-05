@@ -18,6 +18,13 @@ import './style_add.css'
   </div>
   <br />
   <br />
+  
+    <div class="app-container">
+    <!-- 観測画面  -->
+    <Observation01 />
+  </div>
+  <br />
+  <br />
 
 </template>
 
